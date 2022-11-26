@@ -1,51 +1,54 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image , FlatList, TouchableOpacity} from 'react-native';
+import React, { useEffect, useState } from 'react';
 
-export default function Library() {
+export default function Library({navigation}) {
+
+    const [book, setBook] = useState([]);
+
+  useEffect(function(){
+    async function getData(){
+      const response = await fetch('https://raw.githubusercontent.com/Projeto-Unidade-2-Dispositivos-Moveis/Projeto-Unidade-2/BranchMaster/listaBooks.json?token=GHSAT0AAAAAAB3UW42EYHIYSTSFSZHHN5QUY4BLTHA');
+      const menuBook = await response.json();
+       setBook(menuBook)
+    }
+    getData();
+  }, []);
+
+  function renderItem({ item }){
+    return <View style={styles.LibraryContainer}>
+    <View style={styles.PhotoContainer}>
+        <Image style={styles.PhotoImage} source={{uri: item.imgPerfil}} />
+    </View>
+    <View style={styles.InfoContainer}>
+        <View style={styles.TitleContainer}>
+            <Text style={styles.TitleText}> {item.nome}</Text>
+        </View>
+        <View style={styles.ResumeContainer}>
+            <Text style={styles.ResumeText} > {item.texto}</Text>
+        </View>
+    </View>
+</View>
+  }
+
+
+
     return (
-        <>
-            <View style={styles.LibraryContainer}>
-                <View style={styles.PhotoContainer}>
-                    <Image style={styles.PhotoImage} source={require('C:/Users/Camillo/Documents/libri-master/BookPhotos/Volume_1.webp')} />
-                </View>
-                <View style={styles.InfoContainer}>
-                    <View style={styles.TitleContainer}>
-                        <Text style={styles.TitleText}> TITULO </Text>
-                    </View>
-                    <View style={styles.ResumeContainer}>
-                        <Text style={styles.ResumeText} > Resumo Rapaziadinha </Text>
-                    </View>
-                </View>
-            </View>
-            <View style={styles.LibraryContainer}>
-                <View style={styles.PhotoContainer}>
-                    <Image style={styles.PhotoImage} source={require('C:/Users/Camillo/Documents/libri-master/BookPhotos/Volume_1.webp')} />
-                </View>
-                <View style={styles.InfoContainer}>
-                    <View style={styles.TitleContainer}>
-                        <Text style={styles.TitleText}> TITULO </Text>
-                    </View>
-                    <View style={styles.ResumeContainer}>
-                        <Text style={styles.ResumeText} > Resumo Rapaziadinha </Text>
-                    </View>
-                </View>
-            </View><View style={styles.LibraryContainer}>
-                <View style={styles.PhotoContainer}>
-                    <Image style={styles.PhotoImage} source={require('C:/Users/Camillo/Documents/libri-master/BookPhotos/Volume_1.webp')} />
-                </View>
-                <View style={styles.InfoContainer}>
-                    <View style={styles.TitleContainer}>
-                        <Text style={styles.TitleText}> TITULO </Text>
-                    </View>
-                    <View style={styles.ResumeContainer}>
-                        <Text style={styles.ResumeText} > Resumo Rapaziadinha </Text>
-                    </View>
-                </View>
-            </View>
-        </>
+        <View style={styles.inicio}>
+             <FlatList
+            data={book}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            showsVerticalScrollIndicator={false}
+          />
+        </View>
+
     );
 }
 
 const styles = StyleSheet.create({
+    inicio: {
+        flex: 1,
+      },
     LibraryContainer: {
         height: 250,
         marginTop: 25,
