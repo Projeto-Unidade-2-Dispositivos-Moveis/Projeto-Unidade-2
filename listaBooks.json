@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "titulo": "Disney+",
+        "nome": "Disney+",
         "imgPerfil": "https://rollingstone.uol.com.br/media/_versions/disney-plus-logo_widelg.jpg",
         "texto": "Valor: R$ 27,90 por mês \n Clique para mais informações e recomendações"
     },
