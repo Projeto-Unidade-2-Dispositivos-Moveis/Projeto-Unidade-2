@@ -20,6 +20,6 @@ Caso queiram explicitar o que falta ser feito ou o que estão fazendo, basta ir 
 - [ ] Definir detalhes em grupo (como linguagem principal, uso do bootstrap etc)
 - [ ] blabla
 
-Diario: 
+## Diario: 
 - Camillo 23/11 : Criacao de um sketch da primeira tela
 - Camillo 25/11 : Criacao da segunda tela, divisao do codigo em componentes, e implementacao do stacknavigator, para transicao entre telas
