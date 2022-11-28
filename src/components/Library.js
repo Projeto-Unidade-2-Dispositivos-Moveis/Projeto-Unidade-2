@@ -7,7 +7,7 @@ export default function Library({navigation}) {
 
   useEffect(function(){
     async function getData(){
-      const response = await fetch('https://raw.githubusercontent.com/Projeto-Unidade-2-Dispositivos-Moveis/Projeto-Unidade-2/BranchMaster/listaBooks.json?token=GHSAT0AAAAAAB3UW42EYHIYSTSFSZHHN5QUY4BLTHA');
+      const response = await fetch('https://raw.githubusercontent.com/Projeto-Unidade-2-Dispositivos-Moveis/Projeto-Unidade-2/BranchMaster/listaBooks.json?token=GHSAT0AAAAAAB22DNPZO3NCUIK5R2VNRLC6Y4FBPNQ');
       const menuBook = await response.json();
        setBook(menuBook)
     }
@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
     PhotoImage: {
         height: 240,
         width: 150,
-        resizeMode: 'contain'
+        resizeMode: 'contain',
+        aspectRatio: 0.65,
     },
     InfoContainer: {
         width: 225,
