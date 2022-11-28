@@ -7,7 +7,7 @@ export default function Library({navigation}) {
 
   useEffect(function(){
     async function getData(){
-      const response = await fetch('https://raw.githubusercontent.com/Projeto-Unidade-2-Dispositivos-Moveis/Projeto-Unidade-2/BranchMaster/listaBooks.json?token=GHSAT0AAAAAAB22DNPZO3NCUIK5R2VNRLC6Y4FBPNQ');
+      const response = await fetch('https://raw.githubusercontent.com/Projeto-Unidade-2-Dispositivos-Moveis/Projeto-Unidade-2/BranchMaster/listaBooks.json?token=GHSAT0AAAAAAB22DNPZYDB3HITZWAAUAQFIY4FCBNA');
       const menuBook = await response.json();
        setBook(menuBook)
     }
