@@ -10,7 +10,8 @@ export default function AddBookScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <StatusBar style="auto" backgroundColor={theme.fundo_principal} />
-            <Text> TESTE </Text>
+            <Text>Teste</Text>
+
         </View>
     );
 }
