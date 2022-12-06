@@ -10,20 +10,21 @@ import { getFirestore, collection, getDocs, addDoc  } from './node_modules/fireb
 
 // Initialize Firebase
 const firebaseConfig = {
+  apiKey: "AIzaSyBS0zjCDQ0EzcwL-warkDuiNHmn6vpzx28",
 
-    apiKey: "AIzaSyDAt3iFGVgHDnC2w8nEUWr2Tl8ZGGl7Uco",
-  
-    authDomain: "bruno-ect-2525-2022-2.firebaseapp.com",
-  
-    projectId: "bruno-ect-2525-2022-2",
-  
-    storageBucket: "bruno-ect-2525-2022-2.appspot.com",
-  
-    messagingSenderId: "179837118628",
-  
-    appId: "1:179837118628:web:64cb5f8d7bb8e4c6081e31",
-  
-    measurementId: "G-WS581737G4"
+  authDomain: "projetoddm2.firebaseapp.com",
+
+  projectId: "projetoddm2",
+
+  storageBucket: "projetoddm2.appspot.com",
+
+  messagingSenderId: "950156689864",
+
+  appId: "1:950156689864:web:d739640a48e00982fa80fd",
+
+  measurementId: "G-ZQ7XRC6T6Y"
+
+
   
   };
   
