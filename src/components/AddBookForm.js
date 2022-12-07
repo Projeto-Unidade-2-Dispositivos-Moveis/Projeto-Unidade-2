@@ -4,6 +4,7 @@ import { TextInput, Text, Button, Alert, View, StyleSheet, FlatList } from 'reac
 //Files
 import { theme } from '../theme/theme';
 import {bookGenres} from '../utils/bookgenres'
+import { SearchBar } from './SearchBar';
 
 //Libs
 import { Formik } from 'formik';
@@ -58,6 +59,8 @@ export function AddBookForm() {
                 <Text style={styles.error}>{errors.title}</Text>
               }
             </View>
+
+            <SearchBar/>
 
             <Text style={styles.label}> Autor </Text>
             <TextInput
