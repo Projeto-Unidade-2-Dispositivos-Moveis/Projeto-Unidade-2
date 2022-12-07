@@ -13,17 +13,18 @@ import uuid from 'react-native-uuid';
 export default function AddBookScreen() {
     const [text, setText] = React.useState('');
     const [idade, setIdade] = React.useState('');
-    const [cities, setCities] = React.useState([]);
+    const [genero, setGenero] = React.useState('');
+    const [books, setbooks] = React.useState([]);
     const [showLoader, setShowLoader] = React.useState(false);
   
     useEffect(() => {
-      async function getCities(db) {
-        const citiesCol = collection(db, 'cities');
-        const citySnapshot = await getDocs(citiesCol);
-        const cities = citySnapshot.docs.map(doc => doc.data());
-        setCities(cities);
+      async function getbooks(db) {
+        const booksCol = collection(db, 'books');
+        const citySnapshot = await getDocs(booksCol);
+        const books = citySnapshot.docs.map(doc => doc.data());
+        setbooks(books);
       }
-      getCities(db);
+      getbooks(db);
     }, []);
   
     const renderItem = ({ item }) => (
@@ -34,17 +35,19 @@ export default function AddBookScreen() {
   
     const saveItem = async () => {
       setShowLoader(true);
-      if(text && idade) {
+      if(text && idade && genero) {
         try {
           const city = {
             id: uuid.v4(),
             name: text,
             idade: idade,
+            genero: genero,
           };
-          const docRef = await addDoc(collection(db, "cities"), city);
+          const docRef = await addDoc(collection(db, "books"), city);
           setText('');
           setIdade('');
-          setCities(cities.concat([city]));
+          setGenero('');
+          setbooks(books.concat([city]));
   
           console.log("Document written with ID: ", docRef.id);
         } catch(e) {
@@ -62,7 +65,9 @@ export default function AddBookScreen() {
         <View style={styles.inputcontainer}>
           <Text>NOME</Text>
           <TextInput style={styles.input} onChangeText={setText} value={text} />
+          <Text>IDADE</Text>
           <TextInput style={styles.input} onChangeText={setIdade} value={idade} />
+          <TextInput style={styles.input} onChangeText={setGenero} value={genero} />
           <TouchableOpacity
             style={styles.button}
             onPress={saveItem}>
@@ -71,7 +76,7 @@ export default function AddBookScreen() {
         </View>
         <ActivityIndicator animating={showLoader}/>
         <FlatList
-          data={cities}
+          data={books}
           renderItem={renderItem}
           keyExtractor={item => item.id}
         />
@@ -89,14 +94,15 @@ export default function AddBookScreen() {
       justifyContent: 'center',
     },
     inputcontainer: {
-      flexDirection: 'row',
+      flex: 1,
+      //flexDirection: 'row',
       width: '100%',
     },
     input: {
       flex: 1,
       height: 40,
       margin: 12,
-      borderWidth: 1,
+      borderWidth: 2,
       padding: 10,
     },
     button: {
