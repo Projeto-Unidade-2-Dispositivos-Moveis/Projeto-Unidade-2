@@ -1,0 +1,113 @@
+import React from 'react';
+import { StyleSheet, View, Text, TextInput, Touchable } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import Constants from 'expo-constants';
+import { theme } from '../src/theme/theme';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
+
+export default function LoginScreen({ navigation }) {
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
+
+    return (
+        <View style={styles.container}>
+            <StatusBar style="auto" backgroundColor={theme.fundo_principal} />
+            <View style={styles.header_container}>
+                <Text style={styles.title_text}> Ulib </Text>
+                <Text style={styles.slogan_text}> Read without limits</Text>
+            </View>
+            <View style={styles.email_container}>
+                <Text style={styles.email_text}> Your email address</Text>
+                <View style={styles.email_input_container}>
+                    <TextInput label="Email" placeholder="Example@gmail.com" value={email} onChangeText={email => setEmail(email)} />
+                </View>
+            </View>
+            <View style={styles.password_container}>
+                <Text style={styles.password_text}> Choose a password </Text>
+                <View style={styles.password_input_container}>
+                    <TextInput label="Password" placeholder="PasswordExample" value={password} onChangeText={password => setPassword(password)} />
+                </View>
+            </View>
+            <TouchableOpacity style={styles.buttom_container} onPress={() => navigation.navigate('HomeScreen')}>
+                <Text style={styles.buttom_text}> Continue </Text>
+            </TouchableOpacity>
+            <View style={styles.or_container}>
+                <Text style={styles.or_text}> or </Text>
+            </View>
+        </View>
+    );
+}
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: theme.fundo_principal,
+        marginTop: Constants.statusBarHeight,
+    },
+    header_container: {
+        marginVertical: 60,
+        //backgroundColor: 'red',
+        alignItems: 'center', //EIXO X
+        justifyContent: 'center' //EIXO Y
+    },
+    title_text: {
+        fontSize: 50,
+        fontWeight: 'bold',
+    },
+    slogan_text: {
+        fontSize: 18,
+    },
+    email_container: {
+        //backgroundColor: 'green',
+        marginHorizontal: 16,
+        marginBottom: 20,
+    },
+    email_text: {
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    email_input_container: {
+        marginLeft: 6,
+        marginTop: 12,
+    },
+    password_container: {
+        //backgroundColor: 'pink',
+        marginHorizontal: 16,
+        marginTop: 20,
+
+    },
+    password_text: {
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    password_input_container: {
+        marginLeft: 6,
+        marginTop: 12,
+
+    },
+    buttom_container: {
+        backgroundColor: 'gray',
+        height: 60,
+        borderRadius: 30,
+        marginHorizontal: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 30,
+    },
+    buttom_text: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'black',
+    },
+    or_container: {
+        marginVertical: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    or_text: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'gray',
+    }
+});

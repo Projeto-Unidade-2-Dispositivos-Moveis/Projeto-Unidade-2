@@ -5,7 +5,7 @@ export default function Header({ navigation }) {
     return (
         <View style={styles.Header}>
             <View style={styles.Biblioteca}>
-                <Text style={styles.HeaderText}> Biblioteca </Text>
+                <Text style={styles.HeaderText}> Explore </Text>
             </View>
 
             <TouchableOpacity style={styles.button}>
