@@ -1,5 +1,8 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { theme } from '../theme/theme';
+
 
 export default function Header({ navigation }) {
     return (
@@ -8,7 +11,7 @@ export default function Header({ navigation }) {
                 <Text style={styles.HeaderText}> Explore </Text>
             </View>
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.PlusText} onPress={() => navigation.navigate('AddBookScreen')}> + </Text>
+                <FontAwesome5 name="plus" size={24} color={theme.white} onPress={() => navigation.navigate('AddBookScreen')}/>
             </TouchableOpacity>
         </View>
     );
@@ -26,14 +29,11 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         marginRight: 10,
         alignItems: 'center',
+        justifyContent: 'center',
+        padding:10,
     },
     HeaderText: {
         fontSize: 38,
         fontWeight: 'bold',
-    },
-    PlusText: {
-        color: 'white',
-        fontSize: 38,
-        fontWeight: 'bold'
     },
 });
