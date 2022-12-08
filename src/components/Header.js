@@ -7,7 +7,6 @@ export default function Header({ navigation }) {
             <View style={styles.Biblioteca}>
                 <Text style={styles.HeaderText}> Explore </Text>
             </View>
-
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.PlusText} onPress={() => navigation.navigate('AddBookScreen')}> + </Text>
             </TouchableOpacity>
@@ -36,6 +35,5 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 38,
         fontWeight: 'bold'
-    }
-
+    },
 });

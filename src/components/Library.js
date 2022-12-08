@@ -15,21 +15,20 @@ export default function Library({ navigation }) {
     }, []);
 
     function renderItem({ item }) {
-        return <View style={styles.LibraryContainer}>
-            <View style={styles.PhotoContainer}>
-                <Image style={styles.PhotoImage} source={{ uri: item.imgPerfil }} />
-            </View>
-            <View style={styles.InfoContainer}>
+        return (
+            <View style={styles.LibraryContainer}>
+                <View style={styles.PhotoContainer}>
+                    <Image style={styles.PhotoImage} source={{ uri: item.imgPerfil }} />
+                </View>
                 <View style={styles.TitleContainer}>
-                    <Text style={styles.TitleText}> {item.nome}</Text>
+                    <Text style={styles.TitleText}> {item.nome} </Text>
                 </View>
-                <View style={styles.ResumeContainer}>
-                    <Text style={styles.ResumeText} > {item.texto}</Text>
+                <View style={styles.AutorContainer}>
+                    <Text style={styles.AutorText}> {item.autor} </Text>
                 </View>
             </View>
-        </View>
+        );
     }
-
 
 
     return (
@@ -38,7 +37,8 @@ export default function Library({ navigation }) {
                 data={book}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
-                showsVerticalScrollIndicator={false}
+                horizontal
+                showsHorizontalScrollIndicator={false}
             />
         </View>
 
@@ -46,49 +46,40 @@ export default function Library({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    inicio: {
-        flex: 1,
-    },
     LibraryContainer: {
-        height: 250,
-        marginTop: 25,
         //backgroundColor: 'pink',
-        flexDirection: 'row'
     },
     PhotoContainer: {
-        marginHorizontal: 6,
+        marginTop: 20,
+        marginHorizontal: 20,
         justifyContent: 'center',
-        //backgroundColor: 'green'
+        alignItems: 'center',
+        backgroundColor: 'white',
+        borderRadius: 30,
     },
     PhotoImage: {
         height: 240,
-        width: 150,
-        resizeMode: 'contain',
+        width: 120,
         aspectRatio: 0.65,
-    },
-    InfoContainer: {
-        width: 225,
-        //backgroundColor: 'red',
-        alignContent: 'center', //eixo x
+        resizeMode: 'contain',
+        borderRadius: 30,
     },
     TitleContainer: {
-        marginTop: 6,
         //backgroundColor: 'blue',
-        alignItems: 'center',
-        justifyContent: 'center'
+        marginLeft: 22
     },
     TitleText: {
-        fontSize: 30,
+        fontSize: 20,
+        fontWeight: 'bold',
     },
-    ResumeContainer: {
-        marginTop: 6,
-        backgroundColor: 'yellow',
-        height: 190,
-        alignItems: 'center',
-        justifyContent: 'center'
+    AutorContainer: {
+        //backgroudColor: 'red',
+        marginLeft: 22,
     },
-    ResumeText: {
-        fontSize: 18,
+    AutorText: {
+        color: 'gray',
+        fontWeight: 'bold',
+
     }
 
 
