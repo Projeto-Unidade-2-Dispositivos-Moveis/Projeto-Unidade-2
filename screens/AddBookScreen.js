@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
 import { useEffect } from 'react';
 import { theme } from '../src/theme/theme';
-
+import {Form} from '../src/components/AddBookForm';
 import { db, collection, getDocs, addDoc } from '../firebase';
 
 import uuid from 'react-native-uuid';
@@ -59,30 +59,12 @@ export default function AddBookScreen() {
 
   {/* codigo acrescentado */ }
 
-  return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <View style={styles.inputcontainer}>
-        <Text>NOME</Text>
-        <TextInput style={styles.input} onChangeText={setText} value={text} />
-        <Text>IDADE</Text>
-        <TextInput style={styles.input} onChangeText={setIdade} value={idade} />
-        <Text>GENERO</Text>
-        <TextInput style={styles.input} onChangeText={setGenero} value={genero} />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={saveItem}>
-          <Text>Add</Text>
-        </TouchableOpacity>
-      </View>
-      <ActivityIndicator animating={showLoader} />
-      <FlatList
-        data={books}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-      />
-    </View>
-  );
+    return (
+        <View style={styles.container}>
+            <StatusBar style="auto" />
+            <Form />
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
