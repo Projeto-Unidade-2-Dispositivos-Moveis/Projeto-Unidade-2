@@ -1,19 +1,46 @@
-import React from 'react';
-import { StyleSheet, View, Text, TextInput, Touchable } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, View, Text, TextInput, Touchable, KeyboardAvoidingView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
 import { theme } from '../src/theme/theme';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
 
 
 export default function LoginScreen({ navigation }) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [errorLogin,setErrorLogin] = React.useState('');
 
+    const loginFirebase = ()=>{
+
+    }
+
+    useEffect(()=>{
+
+
+    },[]);
+
+    const auth = getAuth();
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
 
     return (
         <View style={styles.container}>
             <StatusBar style="auto" backgroundColor={theme.fundo_principal} />
+            <KeyboardAvoidingView
+            behavior='height' 
+            >
             <View style={styles.header_container}>
                 <Text style={styles.title_text}> Ulib </Text>
                 <Text style={styles.slogan_text}> Read without limits</Text>
@@ -27,7 +54,7 @@ export default function LoginScreen({ navigation }) {
             <View style={styles.password_container}>
                 <Text style={styles.password_text}> Choose a password </Text>
                 <View style={styles.password_input_container}>
-                    <TextInput style={styles.text_input} label="Password" placeholder="Minimum 8 characters" value={password} onChangeText={password => setPassword(password)} />
+                    <TextInput secureTextEntry={true} style={styles.text_input} label="Password" placeholder="Minimum 8 characters" value={password} onChangeText={password => setPassword(password)} />
                 </View>
             </View>
             <TouchableOpacity style={styles.buttom_container} onPress={() => navigation.navigate('HomeScreen')}>
@@ -36,6 +63,8 @@ export default function LoginScreen({ navigation }) {
             <View style={styles.or_container}>
                 <Text style={styles.or_text}> or </Text>
             </View>
+            </KeyboardAvoidingView>
+            
         </View>
     );
 }
