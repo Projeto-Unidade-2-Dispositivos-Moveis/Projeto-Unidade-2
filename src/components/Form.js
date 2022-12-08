@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { TextInput, Text, Button, Alert, View, StyleSheet, FlatList, Pressable } from 'react-native';
+import { TextInput, Text, Alert, View, StyleSheet, Pressable } from 'react-native';
 
 //Files
 import { theme } from '../theme/theme';
@@ -13,7 +13,7 @@ import * as yup from 'yup';
 import {Picker} from '@react-native-picker/picker';
 import { AirbnbRating } from 'react-native-ratings';
 
-export function AddBookForm() {
+export function Form() {
 
   const [selectedGenre, setSelectedGenre] = useState();
   const [rating, setRating] = useState();
