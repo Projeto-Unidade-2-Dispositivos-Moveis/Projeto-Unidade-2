@@ -21,13 +21,13 @@ export default function LoginScreen({ navigation }) {
             <View style={styles.email_container}>
                 <Text style={styles.email_text}> Your email address</Text>
                 <View style={styles.email_input_container}>
-                    <TextInput style={styles.text_input} label="Email" placeholder="Example@gmail.com" value={email} onChangeText={email => setEmail(email)} />
+                    <TextInput label="Email" placeholder="Example@gmail.com" value={email} onChangeText={email => setEmail(email)} />
                 </View>
             </View>
             <View style={styles.password_container}>
                 <Text style={styles.password_text}> Choose a password </Text>
                 <View style={styles.password_input_container}>
-                    <TextInput style={styles.text_input} label="Password" placeholder="Minimum 8 characters" value={password} onChangeText={password => setPassword(password)} />
+                    <TextInput label="Password" placeholder="PasswordExample" value={password} onChangeText={password => setPassword(password)} />
                 </View>
             </View>
             <TouchableOpacity style={styles.buttom_container} onPress={() => navigation.navigate('HomeScreen')}>
@@ -68,12 +68,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     email_input_container: {
-        justifyContent: 'center',
-        height: 50,
+        marginLeft: 6,
         marginTop: 12,
-        borderWidth: 4,
-        borderColor: '#CCC',
-        borderRadius: 30,
     },
     password_container: {
         //backgroundColor: 'pink',
@@ -86,12 +82,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     password_input_container: {
-        justifyContent: 'center',
-        height: 50,
+        marginLeft: 6,
         marginTop: 12,
-        borderWidth: 4,
-        borderColor: '#CCC',
-        borderRadius: 30,
 
     },
     buttom_container: {
@@ -102,9 +94,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 30,
-    },
-    text_input: {
-        marginLeft: 20,
     },
     buttom_text: {
         fontSize: 16,
