@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
-import { TextInput, Text, Button, Alert, View, StyleSheet, FlatList } from 'react-native';
+import { TextInput, Text, Button, Alert, View, StyleSheet, FlatList, Pressable } from 'react-native';
 
 //Files
 import { theme } from '../theme/theme';
 import {bookGenres} from '../utils/bookgenres'
-import { SearchBar } from './SearchBar';
+import {tags} from '../utils/tags'
+
 
 //Libs
 import { Formik } from 'formik';
@@ -16,6 +17,7 @@ export function AddBookForm() {
 
   const [selectedGenre, setSelectedGenre] = useState();
   const [rating, setRating] = useState();
+  const [tag, setTag]= useState();
   
   return (
 <Formik
@@ -23,7 +25,7 @@ export function AddBookForm() {
           title: '',
           author:'',
           genre: '',
-          rating: '',
+          rating: '0',
           tag: ''
         }}
 
@@ -46,6 +48,7 @@ export function AddBookForm() {
         {({ values, handleChange, errors, setFieldTouched, touched, isValid, handleSubmit }) => (
           <View style={styles.container}>
 
+
             <View>
               <Text style={styles.label}> Título do livro </Text>
               <TextInput
@@ -60,8 +63,6 @@ export function AddBookForm() {
               }
             </View>
 
-            <SearchBar/>
-
             <Text style={styles.label}> Autor </Text>
             <TextInput
               placeholder="ex: Dan Brown"
@@ -74,7 +75,7 @@ export function AddBookForm() {
               <Text style={styles.error}>{errors.author}</Text>
             }   
 
-            <Text style={styles.label}>Picker de genero</Text> 
+            <Text style={styles.label}>Gênero literário</Text> 
             <Picker 
               selectedValue={selectedGenre}
               onValueChange={(itemValue) => {setSelectedGenre(itemValue); values.genre = itemValue }}
@@ -87,8 +88,24 @@ export function AddBookForm() {
                   return (<Picker.Item label={item.genre} value={item.genre} key={index} color={'#555'} style={styles.pickerItem} />);
                 })}   
             </Picker>
-            
-            <Text style={styles.label}>Rating</Text> 
+
+
+            <Text style={styles.label}>Tags</Text>
+            <Picker 
+              selectedValue={tag}
+              onValueChange={(itemValue) => {setTag(itemValue); values.tag = itemValue }}
+              dropdownIconColor={theme.details_green}
+              prompt='Selecione a tag'
+              style={styles.picker}
+            >
+              {tags.map((item, index) => 
+                {
+                  return (<Picker.Item label={item.title} value={item.title} key={index} color={'#555'} style={styles.pickerItem} />);
+                })}   
+            </Picker>
+
+                        
+            <Text style={styles.label}>Nota</Text> 
             <AirbnbRating
               count={5}
               size={30}
@@ -98,15 +115,15 @@ export function AddBookForm() {
               ratingContainerStyle={styles.rating}
               onFinishRating={ (value) => {setRating(value); values.rating = value;} }
             />
-            <Text style={styles.label}>Tags</Text> 
-
-            
-            <Button
-              color={theme.details_green}
-              title='Submit'
+          
+            <Pressable 
+              style={styles.button} 
               disabled={!isValid}
               onPress={handleSubmit}
-            />
+            >
+              <Text style={styles.buttonText}>Enviar</Text>
+            </Pressable>
+
           </View>
         )}
       </Formik>  )
@@ -133,8 +150,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   error:{
-    fontSize: 14, 
-    color: '#FF0D10'
+    fontSize: 16, 
+    color: theme.error
   },
   picker: {
     color: '#555',
@@ -145,5 +162,17 @@ const styles = StyleSheet.create({
   },
   rating: {
     padding:12,
+  }, 
+  button: {
+    backgroundColor: theme.details_green,
+    borderRadius:10,
+    height: theme.size,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+  },
+  buttonText: {
+    fontSize: 20,
+    color: theme.white,
   }
 })

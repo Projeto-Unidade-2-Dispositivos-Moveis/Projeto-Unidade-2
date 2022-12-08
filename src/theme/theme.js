@@ -10,4 +10,5 @@ export const theme = {
     grey:'#CCC',
     error:'#E22012', 
     success:'##26E472', 
+    size: 50,
 };
