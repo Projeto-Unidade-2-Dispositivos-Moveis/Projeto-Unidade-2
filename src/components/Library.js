@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import {firebase } from '../../firebase';
 
 export default function Library({ navigation }) {
 
     const [book, setBook] = useState([]);
+    const [list, setList] = useState([]);
 
     useEffect(function () {
         async function getData() {
@@ -12,6 +14,16 @@ export default function Library({ navigation }) {
             setBook(menuBook)
         }
         getData();
+
+        firebase.firestore().collection("books").onSnapshot((docs) => {
+            const list = [];
+            docs.forEach((doc) => {
+                 list.push({ ...doc.data(), id: doc.id });
+            });
+            setList(list);
+       });
+
+
     }, []);
 
     function renderItem({ item }) {
@@ -30,8 +42,25 @@ export default function Library({ navigation }) {
         );
     }
 
+    function renderItem2({ item }) {
+        return (
+            <View style={styles.LibraryContainer}>
+                <View style={styles.PhotoContainer}>
+                    <Image style={styles.PhotoImage} source={{ uri: item.imgPerfil }} />
+                </View>
+                <View style={styles.TitleContainer}>
+                    <Text style={styles.TitleText}> {item.title} </Text>
+                </View>
+                <View style={styles.AutorContainer}>
+                    <Text style={styles.AutorText}> {item.autor} </Text>
+                </View>
+            </View>
+        );
+    }
+
 
     return (
+        <>
         <View style={styles.inicio}>
             <FlatList
                 data={book}
@@ -41,7 +70,17 @@ export default function Library({ navigation }) {
                 showsHorizontalScrollIndicator={false}
             />
         </View>
-
+        <View style={styles.inicio}>
+            <FlatList
+                data={list}
+                renderItem={renderItem2}
+                keyExtractor={item => item.id}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+            />
+        </View>
+        
+</>
     );
 }
 

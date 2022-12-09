@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
+//import { Form } from '../src/components/Form';
 import { theme } from '../src/theme/theme';
 
 import Header from '../src/components/Header';

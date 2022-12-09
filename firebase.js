@@ -1,5 +1,8 @@
 import { initializeApp } from './node_modules/firebase/app';
 import { getFirestore, collection, getDocs, addDoc  } from './node_modules/firebase/firestore/lite';
+import { getStorage} from "firebase/storage";
+import {getAuth} from "firebase/auth";
+import firebase from "firebase/compat";
 
 // Optionally import the services that you want to use
 // import {...} from "firebase/auth";
@@ -33,7 +36,11 @@ const firebaseConfig = {
 // Use this to initialize the firebase App
 
 // Use these for db & auth
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
-export { db, collection, getDocs, addDoc }
+const app = initializeApp(firebaseConfig);
+const db=getFirestore();
+const storage=getStorage(app);
+const auth=getAuth();
+firebase.initializeApp(firebaseConfig);
+
+export {db,app,storage,auth,firebase};
