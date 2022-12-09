@@ -8,65 +8,65 @@
     },
     {
         "id": 2,
-        "nome": "Paramount+",
-        "imgPerfil": "https://www.paramountplus.com/assets/pplus/PPlus_Logo_1200x630_BLUE.png",
-        "texto": "Valor: R$ 14,90 por mês \n Clique para mais informações e recomendações",
-        "autor": "By Echiro oda"
+        "nome": "Expiração",
+        "imgPerfil": "https://www.intrinseca.com.br/upload/livros/Expiracao-G.jpg",
+        "texto": "Livro de contos de ficção científica",
+        "autor": "By Ted Chiang"
     },
     {
         "id": 3,
-        "nome": "Globoplay",
-        "imgPerfil": "https://gkpb.com.br/wp-content/uploads/2020/08/novo-logo-globoplay-fundo-preto.jpg",
-        "texto": "Valor: R$ 24,90 por mês \n Clique para mais informações e recomendações",
-        "autor": "By Echiro oda"
+        "nome": "As Crônicas de Nárnia",
+        "imgPerfil": "htthttps://m.media-amazon.com/images/I/71yJLhQekBL.jpg",
+        "texto": "Livro famoso do C.s.Lewis",
+        "autor": "By C.S.Lewis"
     },
     {
         "id": 4,
-        "nome": "Crunchyroll",
-        "imgPerfil": "https://logosmarcas.net/wp-content/uploads/2021/03/Crunchyroll-Logo.png",
-        "texto": "Planos a partir de: R$ 14,99 por mês \n Clique para mais informações e recomendações",
-        "autor": "By Echiro oda"
+        "nome": "Harry Potter e a Pedra Filosofal",
+        "imgPerfil": "https://m.media-amazon.com/images/I/81ibfYk4qmL.jpg",
+        "texto": "Histórias do Mundo Bruxo",
+        "autor": "By J.K. Rowling"
     },
     {
         "id": 5,
-        "nome": "Apple Tv+",
-        "imgPerfil": "https://www.apple.com/v/apple-tv-plus/ac/images/meta/apple-tv__e7aqjl2rqzau_og.png",
-        "texto": "Valor: R$ 14,90 por mês \n Clique para mais informações e recomendações",
-        "autor": "By Echiro oda"
+        "nome": "Percy Jackson e o Ladrão de Raios",
+        "imgPerfil": "https://m.media-amazon.com/images/I/71p0560f0NL.jpg",
+        "texto": "Mitologia grega com cultura pop",
+        "autor": "By Rick Riordan"
     },
     {
         "id": 6,
-        "nome": "Youtube Premium",
-        "imgPerfil": "https://www.pngitem.com/pimgs/m/436-4360375_youtube-premium-logo-png-transparent-background-hd-youtube.png",
-        "texto": "Planos a partir de: R$ 12,50 por mês \n Clique para mais informações e recomendações",
-        "autor": "By Echiro oda"
+        "nome": "Cidade dos ossos",
+        "imgPerfil": "https://m.media-amazon.com/images/I/91MWcXJPigL.jpg",
+        "texto": "Anjo que briga",
+        "autor": "By Cassandra Clare"
     },
     {
         "id": 7,
-        "nome": "Hbo Max",
-        "imgPerfil": "https://hbomax-images.warnermediacdn.com/2020-05/square%20social%20logo%20400%20x%20400_0.png",
-        "texto": "Planos a partir de: R$ 14,16 por mês \n Clique para mais informações e recomendações",
-        "autor": "By Echiro oda"
+        "nome": "Jogos Vorazes",
+        "imgPerfil": "https://m.media-amazon.com/images/I/61zBhzjS4LL.jpg",
+        "texto": "Rinha de galo sendo que de gente",
+        "autor": "By Suzanne Collins"
     },
     {
         "id": 8,
-        "nome": "Prime Video",
-        "imgPerfil": "https://m.media-amazon.com/images/I/41mpv9rBhmL.png",
-        "texto": "Planos a partir de: R$ 9,90 por mês \n Clique para mais informações e recomendações",
-        "autor": "By Echiro oda"
+        "nome": "Fundação",
+        "imgPerfil": "https://m.media-amazon.com/images/I/712vJIziMgL.jpg",
+        "texto": "tipo star wars sendo que com menos luta",
+        "autor": "By Isaac Asimov"
     },
     {
         "id": 9,
-        "nome": "Netflix",
-        "imgPerfil": "https://gkpb.com.br/wp-content/uploads/2016/06/novo-icone-identidade-visual-logo-netflix-blog-gkpb.jpg",
-        "texto": "Planos a partir de: R$ 25,90 por mês \n Clique para mais informações e recomendações",
-        "autor": "By Echiro oda"
+        "nome": "Christine",
+        "imgPerfil": "https://m.media-amazon.com/images/I/81qtUiLhGWL.jpg",
+        "texto": "terror com carro",
+        "autor": "By Stephen King"
     },
     {
         "id": 10,
-        "nome": "Star+",
-        "imgPerfil": "https://static-assets.bamgrid.com/product/starplus/images/share-default.d72cf588f6d06cba22171f5ae44289d3.png",
-        "texto": "Planos a partir de: R$ 9,90 por mês \n Clique para mais informações e recomendações",
-        "autor": "By Echiro oda"
+        "nome": "Heartstopper",
+        "imgPerfil": "https://m.media-amazon.com/images/I/8129HX+5JGL.jpg",
+        "texto": "Pra agradar os gays",
+        "autor": "By Alice Oseman"
     }
 ]
