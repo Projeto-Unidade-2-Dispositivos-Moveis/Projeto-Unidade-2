@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { TextInput, Text, Alert, View, StyleSheet, Pressable, Image } from 'react-native';
+import { TextInput, Text, Alert, View, StyleSheet, Pressable, Image, ScrollView  } from 'react-native';
 //import { db, collection, getDocs, addDoc } from '../firebase';
 //Files
 import { theme } from '../theme/theme';
@@ -22,7 +22,7 @@ export function Form() {
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
+    const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       base64: true,
@@ -30,10 +30,9 @@ export function Form() {
       selectionLimit:1,
     });
 
-    console.log(result);
-
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+    setImage(result.assets[0].uri);
+    // console.log(result.assets[0].uri);
     }
   };
 
@@ -50,7 +49,7 @@ export function Form() {
         }}
 
         // TODO: Linkar ao banco de dados (pode alterar essa linha sem dó)
-        onSubmit={values => Alert.alert(JSON.stringify(values))}
+        onSubmit={values => {Alert.alert(JSON.stringify(values)); console.log(values)}}
 
         validationSchema={yup.object().shape({
           title: yup
@@ -60,14 +59,15 @@ export function Form() {
             .string()
             .required('Insira o nome do autor'),
           rating: yup
+            .number(),
+          tag: yup
             .string(),
           genre: yup
-          .string()
-          .required('Selecione um gênero'),
+            .string(),
         })}
       >
         {({ values, handleChange, errors, setFieldTouched, touched, isValid, handleSubmit }) => (
-          <View style={styles.container}>
+          <ScrollView contentContainerStyle={styles.container}>
 
 
             <View>
@@ -100,12 +100,13 @@ export function Form() {
 
             <Pressable 
               style={styles.poster} 
-              onPress={pickImage}
+              onPress={() => {pickImage()}}
             >
             {
               image ? 
               <Image source={{ uri: image }} style={styles.poster} /> : <Text style={styles.posterText}>Capa</Text>}
             </Pressable>
+          
 
 
             <Text style={styles.label}>Gênero literário</Text> 
@@ -157,7 +158,7 @@ export function Form() {
               <Text style={styles.buttonText}>Enviar</Text>
             </Pressable>
 
-          </View>
+          </ScrollView>
         )}
       </Formik>  )
 }
@@ -184,14 +185,14 @@ const styles = StyleSheet.create({
   },
   error:{
     fontSize: 16, 
-    color: theme.error
+    color: theme.error,
+    marginBottom:10,
   },
   picker: {
     color: '#555',
     borderColor: theme.grey,
     borderWidth: 1,
     borderRadius:10,
-
   },
   rating: {
     padding:12,
@@ -206,7 +207,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
     color: theme.white,
-  }
   },
   posterText: {
     fontSize: 18,
