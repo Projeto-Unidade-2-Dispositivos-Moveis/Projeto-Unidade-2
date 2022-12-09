@@ -17,9 +17,9 @@ export default function Library({ navigation }) {
     function renderItem({ item }) {
         return (
             <View style={styles.LibraryContainer}>
-                <View style={styles.PhotoContainer}>
+                <TouchableOpacity style={styles.PhotoContainer} onPress={() => navigation.navigate('BookScreen', { id: item.id })}>
                     <Image style={styles.PhotoImage} source={{ uri: item.imgPerfil }} />
-                </View>
+                </TouchableOpacity>
                 <View style={styles.TitleContainer}>
                     <Text style={styles.TitleText}> {item.nome} </Text>
                 </View>
