@@ -1,24 +1,43 @@
 import React, {useState} from 'react'
-import { TextInput, Text, Alert, View, StyleSheet, Pressable } from 'react-native';
+import { TextInput, Text, Alert, View, StyleSheet, Pressable, Image } from 'react-native';
 
 //Files
 import { theme } from '../theme/theme';
 import {bookGenres} from '../utils/bookgenres'
 import {tags} from '../utils/tags'
 
-
 //Libs
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import {Picker} from '@react-native-picker/picker';
 import { AirbnbRating } from 'react-native-ratings';
+import * as ImagePicker from 'expo-image-picker';
 
 export function Form() {
 
+
   const [selectedGenre, setSelectedGenre] = useState();
   const [rating, setRating] = useState();
-  const [tag, setTag]= useState();
-  
+  const [tag, setTag] = useState();
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      base64: true,
+      aspect: [2, 3],
+      selectionLimit:1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
+
   return (
 <Formik
         initialValues={{ 
@@ -26,7 +45,8 @@ export function Form() {
           author:'',
           genre: '',
           rating: '0',
-          tag: ''
+          tag: '',
+          image:'',
         }}
 
         // TODO: Linkar ao banco de dados (pode alterar essa linha sem dó)
@@ -41,8 +61,9 @@ export function Form() {
             .required('Insira o nome do autor'),
           rating: yup
             .string(),
-          startDate: yup
-            .date(),
+          genre: yup
+          .string()
+          .required('Selecione um gênero'),
         })}
       >
         {({ values, handleChange, errors, setFieldTouched, touched, isValid, handleSubmit }) => (
@@ -74,6 +95,18 @@ export function Form() {
             {touched.author && errors.author &&
               <Text style={styles.error}>{errors.author}</Text>
             }   
+
+            <Text style={styles.label}>Capa do livro</Text> 
+
+            <Pressable 
+              style={styles.poster} 
+              onPress={pickImage}
+            >
+            {
+              image ? 
+              <Image source={{ uri: image }} style={styles.poster} /> : <Text style={styles.posterText}>Capa</Text>}
+            </Pressable>
+
 
             <Text style={styles.label}>Gênero literário</Text> 
             <Picker 
@@ -115,7 +148,7 @@ export function Form() {
               ratingContainerStyle={styles.rating}
               onFinishRating={ (value) => {setRating(value); values.rating = value;} }
             />
-          
+
             <Pressable 
               style={styles.button} 
               disabled={!isValid}
@@ -142,7 +175,7 @@ const styles = StyleSheet.create({
   input: {
     height:50,
     backgroundColor: theme.white,
-    borderColor: '#CCC',
+    borderColor: theme.grey,
     borderWidth: 1,
     borderRadius:10,
     fontSize:16,
@@ -155,7 +188,7 @@ const styles = StyleSheet.create({
   },
   picker: {
     color: '#555',
-    borderColor: '#CCC',
+    borderColor: theme.grey,
     borderWidth: 1,
     borderRadius:10,
 
@@ -169,10 +202,25 @@ const styles = StyleSheet.create({
     height: theme.size,
     justifyContent: 'center',
     alignItems: 'center',
-
   },
   buttonText: {
     fontSize: 20,
     color: theme.white,
-  }
+  },
+  posterText: {
+    fontSize: 18,
+    color: '#555',
+  },
+  poster: {
+    backgroundColor: theme.grey,
+    borderRadius:10,
+    aspectRatio: 2/3,
+    height: 300,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginVertical: 10,
+
+  },
+
 })
