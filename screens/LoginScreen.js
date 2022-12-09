@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
 import { theme } from '../src/theme/theme';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 
@@ -37,7 +38,7 @@ createUserWithEmailAndPassword(auth, email, password)
 
     return (
         <View style={styles.container}>
-            <StatusBar style="auto" backgroundColor={theme.fundo_principal} />
+            <StatusBar style="auto" backgroundColor={theme.white} />
             <KeyboardAvoidingView
             behavior='height' 
             >
@@ -51,6 +52,7 @@ createUserWithEmailAndPassword(auth, email, password)
                     <TextInput style={styles.text_input} label="Email" placeholder="Example@gmail.com" value={email} onChangeText={email => setEmail(email)} />
                 </View>
             </View>
+
             <View style={styles.password_container}>
                 <Text style={styles.password_text}> Choose a password </Text>
                 <View style={styles.password_input_container}>
@@ -63,6 +65,33 @@ createUserWithEmailAndPassword(auth, email, password)
             <View style={styles.or_container}>
                 <Text style={styles.or_text}> or </Text>
             </View>
+
+            {errorLogin === true
+            ?
+                <View style={styles.contentAlert}>
+                    <Text style={styles.warningAlert}>Email ou senha invalido</Text>
+                </View>
+            :
+                <View/>
+            }
+
+            { email === "" || password === ""
+            ?
+                <TouchableOpacity
+                disable={true}
+                style={styles.buttom_containerLogin}
+                >
+                    <Text style={styles.buttom_text}>Login</Text>
+                </TouchableOpacity>
+            :
+                <TouchableOpacity
+                     disable={true}
+                    style={styles.buttonLogin}
+                >
+                    <Text style={styles.textButtonLogin}>Login</Text>
+                </TouchableOpacity>
+            }
+
             </KeyboardAvoidingView>
             
         </View>
@@ -71,7 +100,7 @@ createUserWithEmailAndPassword(auth, email, password)
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: theme.fundo_principal,
+        backgroundColor: theme.white,
         marginTop: Constants.statusBarHeight,
     },
     header_container: {
@@ -132,6 +161,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 30,
     },
+    buttom_containerLogin: {
+        backgroundColor: '#ADADAD',
+        height: 60,
+        borderRadius: 30,
+        marginHorizontal: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 30,
+    },
+    
     text_input: {
         marginLeft: 20,
     },

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { TextInput, Text, Alert, View, StyleSheet, Pressable } from 'react-native';
-
+//import { db, collection, getDocs, addDoc } from '../firebase';
 //Files
 import { theme } from '../theme/theme';
 import {bookGenres} from '../utils/bookgenres'
