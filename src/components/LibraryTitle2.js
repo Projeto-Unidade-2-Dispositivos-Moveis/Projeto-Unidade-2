@@ -2,10 +2,10 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 
-export default function LibraryTitle() {
+export default function LibraryTitle2() {
     return (
         <View style={styles.LibraryTitleContainer}>
-            <Text style={styles.LibraryTitleContainerText}> Popular Now </Text>
+            <Text style={styles.LibraryTitleContainerText}> Your lib </Text>
         </View>
     )
 }

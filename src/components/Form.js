@@ -52,9 +52,9 @@ export default function Form() {
 				image: '',
 			}}
 
-			// TODO: Linkar ao banco de dados (pode alterar essa linha sem dó)
 			onSubmit={(values) => {
 				firebase.firestore().collection("books").add(values);
+                    console.log("enviado");
 			}
 			}
 

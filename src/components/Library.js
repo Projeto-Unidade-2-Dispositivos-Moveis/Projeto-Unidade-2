@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import {firebase } from '../../firebase';
+import LibraryTitle2 from './LibraryTitle2';
 
 export default function Library({ navigation }) {
 
@@ -46,13 +47,13 @@ export default function Library({ navigation }) {
         return (
             <View style={styles.LibraryContainer}>
                 <View style={styles.PhotoContainer}>
-                    <Image style={styles.PhotoImage} source={{ uri: item.imgPerfil }} />
+                    <Image style={styles.PhotoImage} source={{ uri: item.image }} />
                 </View>
                 <View style={styles.TitleContainer}>
                     <Text style={styles.TitleText}> {item.title} </Text>
                 </View>
                 <View style={styles.AutorContainer}>
-                    <Text style={styles.AutorText}> {item.autor} </Text>
+                    <Text style={styles.AutorText}> {item.author} </Text>
                 </View>
             </View>
         );
@@ -70,6 +71,7 @@ export default function Library({ navigation }) {
                 showsHorizontalScrollIndicator={false}
             />
         </View>
+        <LibraryTitle2 navigation={navigation} />
         <View style={styles.inicio}>
             <FlatList
                 data={list}

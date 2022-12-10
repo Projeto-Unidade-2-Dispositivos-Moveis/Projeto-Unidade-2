@@ -35,5 +35,6 @@ const styles = StyleSheet.create({
     HeaderText: {
         fontSize: 38,
         fontWeight: 'bold',
+        color: '#ECF8F8',
     },
 });
